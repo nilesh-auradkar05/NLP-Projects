@@ -1,4 +1,4 @@
-model_config:
+model_configs:
   "gpt2-small (124M)":
     vocab_size: 50257
     context_length: 1024
