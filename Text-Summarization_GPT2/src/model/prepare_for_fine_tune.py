@@ -6,7 +6,7 @@ from src.model.model import GPT2ModelClone
 
 
 class PrepareModelWithPreTrainedWeights:
-    def __init__(self, model_name: str, device: str = "cpu"):
+    def __init__(self, model_name: str, device: str = "cuda"):
         self.model_name = model_name
         self.device = device
         self._load_all()
@@ -26,7 +26,7 @@ class PrepareModelWithPreTrainedWeights:
         return torch.nn.Parameter(torch.tensor(right))
 
     def _get_settings_and_params(self):
-        settings, params = download_and_load_gpt2(model_size="355M", models_dir="../../model_weights/")
+        settings, params = download_and_load_gpt2(model_size="124M", models_dir="./model_weights/")
         print(f"Settings: {settings}")
         print(f"Params: {params.keys()}")
         return settings, params
@@ -99,12 +99,9 @@ class PrepareModelWithPreTrainedWeights:
                 self.model.transformer_blocks[block].norm_2.shift,
                 self.params["blocks"][block]["ln_2"]["b"])
             
-        self.model.final_norm.scale = self._assign_params(
-            self.model.final_norm.scale, self.params["g"])
-        self.model.final_norm.shift = self._assign_params(
-            self.model.final_norm.shift, self.params["b"])
-        self.model.out_head.weight = self._assign_params(
-            self.model.out_head.weight, self.params["wte"])
+        self.model.final_norm.scale = self._assign_params(self.model.final_norm.scale, self.params["g"])
+        self.model.final_norm.shift = self._assign_params(self.model.final_norm.shift, self.params["b"])
+        self.model.out_head.weight = self._assign_params(self.model.out_head.weight, self.params["wte"])
         
     
         

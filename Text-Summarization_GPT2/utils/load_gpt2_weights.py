@@ -9,7 +9,7 @@ import numpy as np
 import tensorflow as tf
 from tqdm import tqdm
 
-def download_and_load_gpt2(model_size="355M", models_dir="../../model_weights/"):
+def download_and_load_gpt2(model_size="124M", models_dir="./model_weights/"):
     # Validate model size
     allowed_sizes = ("124M", "355M", "774M", "1558M")
     if model_size not in allowed_sizes:
@@ -113,7 +113,7 @@ def load_gpt2_params_from_tf_ckpt(ckpt_path, settings):
 if __name__ == "__main__":
     try:
         # Download and load GPT-2 model
-        settings, params = download_and_load_gpt2(model_size="355M")
+        settings, params = download_and_load_gpt2(model_size="124M")
         
         # Print some basic info about the loaded model
         print("\nModel details:")

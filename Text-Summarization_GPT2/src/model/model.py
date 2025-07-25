@@ -29,9 +29,9 @@ class FeedForward(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         self.layers = nn.Sequential(
-            nn.Linear(cfg["emb_dim"], 4 * cfg["emb_dim"]),
+            nn.Linear(cfg["embedding_dim"], 4 * cfg["embedding_dim"]),
             GELU(),
-            nn.Linear(4 * cfg["emb_dim"], cfg["emb_dim"]),
+            nn.Linear(4 * cfg["embedding_dim"], cfg["embedding_dim"]),
         )
 
     def forward(self, x):
@@ -100,15 +100,15 @@ class TransformerBlock(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         self.mask_attn = MultiHeadAttention(
-            d_in=cfg["emb_dim"],
-            d_out=cfg["emb_dim"],
+            d_in=cfg["embedding_dim"],
+            d_out=cfg["embedding_dim"],
             context_length=cfg["context_length"],
-            num_heads=cfg["n_heads"], 
+            num_heads=cfg["num_heads"], 
             dropout=cfg["drop_rate"],
             qkv_bias=cfg["qkv_bias"])
         self.ffn_block = FeedForward(cfg)
-        self.norm_1 = LayerNorm(cfg["emb_dim"])
-        self.norm_2 = LayerNorm(cfg["emb_dim"])
+        self.norm_1 = LayerNorm(cfg["embedding_dim"])
+        self.norm_2 = LayerNorm(cfg["embedding_dim"])
         self.drop_shortcut = nn.Dropout(cfg["drop_rate"])
 
     def forward(self, x):
@@ -132,16 +132,16 @@ class TransformerBlock(nn.Module):
 class GPT2ModelClone(nn.Module):
     def __init__(self, cfg):
         super().__init__()
-        self.tok_embeddings = nn.Embedding(cfg["vocab_size"], cfg["emb_dim"])
-        self.pos_embeddings = nn.Embedding(cfg["context_length"], cfg["emb_dim"])
+        self.tok_embeddings = nn.Embedding(cfg["vocab_size"], cfg["embedding_dim"])
+        self.pos_embeddings = nn.Embedding(cfg["context_length"], cfg["embedding_dim"])
         self.drop_embeddings = nn.Dropout(cfg["drop_rate"])
         
         self.transformer_blocks = nn.Sequential(
-            *[TransformerBlock(cfg) for _ in range(cfg["n_layers"])])
+            *[TransformerBlock(cfg) for _ in range(cfg["num_layers"])])
         
-        self.final_norm = LayerNorm(cfg["emb_dim"])
+        self.final_norm = LayerNorm(cfg["embedding_dim"])
         self.out_head = nn.Linear(
-            cfg["emb_dim"], cfg["vocab_size"], bias=False
+            cfg["embedding_dim"], cfg["vocab_size"], bias=False
         )
 
     def forward(self, in_idx):

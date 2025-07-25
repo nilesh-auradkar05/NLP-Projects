@@ -14,6 +14,6 @@ def calculate_metrics(logits, targets):
         predicted_labels = torch.argmax(active_logits, dim=1)
         accuracy = (predicted_labels == active_targets).sum().float() / active_targets.numel()
     else:
-        accuracy = torch.tensor(0.0)
+        accuracy = torch.tensor(0.0, device=logits.device)
 
     return loss, accuracy, perplexity

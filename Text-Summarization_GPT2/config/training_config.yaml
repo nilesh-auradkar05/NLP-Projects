@@ -1,0 +1,13 @@
+# Training Parameters
+train_config:
+  batch_size: 2
+  num_workers: 2
+  learning_rate: 1.0e-5
+  num_epochs: 10
+
+# Experiment Tracking Path
+experiment_path: "experiments/finetune_runs/summarization/{model_name}"
+
+# Weights and Biases Config
+wandb_config:
+  project: "summarization-gpt2-finetune"
