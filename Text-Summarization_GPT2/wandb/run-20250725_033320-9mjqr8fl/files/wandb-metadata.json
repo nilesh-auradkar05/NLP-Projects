@@ -1,0 +1,38 @@
+{
+  "os":  "Linux-6.14.0-24-generic-x86_64-with-glibc2.39",
+  "python":  "CPython 3.11.10",
+  "startedAt":  "2025-07-25T07:33:20.290114Z",
+  "program":  "-m src.training.fine_tune_training",
+  "git":  {
+    "remote":  "git@github.com:nilesh-auradkar05/NLP-Projects.git",
+    "commit":  "16131196c6d4a61f6d697d7c0e11f7dd11e33da4"
+  },
+  "email":  "nilesh.auradkar.0599@gmail.com",
+  "root":  ".",
+  "host":  "CosmicMuffin",
+  "executable":  "/media/cosmic-muffin/wd_black/git/envs/fine-tune-tf/bin/python3",
+  "cpu_count":  6,
+  "cpu_count_logical":  12,
+  "gpu":  "NVIDIA GeForce GTX 1660 Ti",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "294149980160",
+      "used":  "136939823104"
+    }
+  },
+  "memory":  {
+    "total":  "24522547200"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce GTX 1660 Ti",
+      "memoryTotal":  "6442450944",
+      "cudaCores":  1536,
+      "architecture":  "Turing",
+      "uuid":  "GPU-1d9181e8-4895-cfbc-255a-bae49324490d"
+    }
+  ],
+  "cudaVersion":  "12.9",
+  "writerId":  "a9zcixhe0t8bkifzbl135qeh1thqplix"
+}

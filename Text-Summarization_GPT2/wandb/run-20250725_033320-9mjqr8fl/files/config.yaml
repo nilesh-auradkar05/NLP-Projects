@@ -1,0 +1,95 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            a9zcixhe0t8bkifzbl135qeh1thqplix:
+                cpu_count: 6
+                cpu_count_logical: 12
+                cudaVersion: "12.9"
+                disk:
+                    /:
+                        total: "294149980160"
+                        used: "136939823104"
+                email: nilesh.auradkar.0599@gmail.com
+                executable: /media/cosmic-muffin/wd_black/git/envs/fine-tune-tf/bin/python3
+                git:
+                    commit: 16131196c6d4a61f6d697d7c0e11f7dd11e33da4
+                    remote: git@github.com:nilesh-auradkar05/NLP-Projects.git
+                gpu: NVIDIA GeForce GTX 1660 Ti
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Turing
+                      cudaCores: 1536
+                      memoryTotal: "6442450944"
+                      name: NVIDIA GeForce GTX 1660 Ti
+                      uuid: GPU-1d9181e8-4895-cfbc-255a-bae49324490d
+                host: CosmicMuffin
+                memory:
+                    total: "24522547200"
+                os: Linux-6.14.0-24-generic-x86_64-with-glibc2.39
+                program: -m src.training.fine_tune_training
+                python: CPython 3.11.10
+                root: .
+                startedAt: "2025-07-25T07:33:20.290114Z"
+                writerId: a9zcixhe0t8bkifzbl135qeh1thqplix
+        m:
+            - "1": trainer/global_step
+              "6":
+                - 3
+              "7": []
+            - "2": '*'
+              "5": 1
+              "6":
+                - 1
+              "7": []
+        python_version: 3.11.10
+        t:
+            "1":
+                - 1
+                - 2
+                - 3
+                - 9
+                - 11
+                - 49
+                - 51
+                - 71
+                - 103
+            "2":
+                - 1
+                - 2
+                - 3
+                - 9
+                - 11
+                - 49
+                - 51
+                - 71
+                - 103
+            "3":
+                - 7
+                - 13
+                - 16
+                - 66
+            "4": 3.11.10
+            "5": 0.21.0
+            "6": 4.53.2
+            "12": 0.21.0
+            "13": linux-x86_64
+model_config:
+    value:
+        context_length: 1024
+        drop_rate: 0.1
+        embedding_dim: 768
+        num_heads: 12
+        num_layers: 12
+        qkv_bias: true
+        vocab_size: 50257
+model_name:
+    value: gpt2-small (124M)
+num_training_steps:
+    value: 126320
+train_config:
+    value:
+        batch_size: 3
+        learning_rate: 1e-05
+        num_epochs: 20
+        num_workers: 2
